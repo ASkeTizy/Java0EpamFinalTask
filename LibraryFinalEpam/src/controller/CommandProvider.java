@@ -1,6 +1,6 @@
 package controller;
 
-import javafx.scene.web.HTMLEditorSkin;
+import controller.command.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,8 @@ final class CommandProvider {
         repository.put(CommandName.REGISTRATION,new Register());
         repository.put(CommandName.ADD_BOOK,new AddBook());
         repository.put(CommandName.WRONG_REQUEST,new WrongRequest());
-
+        repository.put(CommandName.EXIT,new ExitRequest());
+        repository.put(CommandName.FIND_BOOK,new FindBook());
     }
 
     public Command getCommand(String name) {

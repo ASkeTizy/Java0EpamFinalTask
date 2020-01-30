@@ -50,7 +50,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return getClass() + "{" +
+        return getClass().getSimpleName() + "{" +
                 "login='" + login + '\'' +
                 ", pasword='" + password + '\'' +
                 '}';

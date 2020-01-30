@@ -1,25 +1,27 @@
 package view;
 
 import controller.Controller;
-import dao.FileUserDAO;
-import services.ServiceException;
+import controller.ControllerException;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
 
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, ServiceException {
+    public static void main(String[] args) throws ViewException {
         System.out.println("Input command");
         Scanner in=new Scanner(System.in);
-        String ans = null;
-        while (ans!="exit") {
+        String ans ;
+        do {
             String s = in.nextLine();
-             ans = new Controller().executeTask(s);
+            try {
+                ans = new Controller().executeTask(s);
+            } catch (ControllerException e) {
+                throw new ViewException (e);
+            }
             System.out.println(ans);
-        }
+        } while (!ans.equals("exit"));
 
     }
 }

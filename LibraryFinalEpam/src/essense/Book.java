@@ -50,7 +50,7 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return getClass() + "{" +
+        return getClass().getSimpleName() + "{" +
                 "name='" + name + '\'' +
                 ", author='" + author + '\'' +
                 '}';

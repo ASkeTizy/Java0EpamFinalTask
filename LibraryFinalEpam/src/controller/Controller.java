@@ -1,22 +1,21 @@
 package controller;
 
-import services.ServiceException;
-
-import java.io.IOException;
+import controller.command.Command;
 
 public class Controller {
 
-    private final CommandProvider provider=new CommandProvider();
-    private final char paramDelimeter=' ';
-    public String executeTask(String request) throws IOException, ClassNotFoundException, ServiceException {
+    private final CommandProvider provider = new CommandProvider();
+    private final char paramDelimeter = ' ';
+
+    public String executeTask(String request) throws ControllerException {
 
         String commandName;
         Command executionCommand;
-        commandName=request.substring(0,request.indexOf(paramDelimeter));
-        executionCommand=provider.getCommand(commandName);
+        commandName = request.substring(0, request.indexOf(paramDelimeter));
+        executionCommand = provider.getCommand(commandName);
         String response;
-        response=executionCommand.execute(request);
 
-       return response;
+        response = executionCommand.execute(request);
+        return response;
     }
 }
