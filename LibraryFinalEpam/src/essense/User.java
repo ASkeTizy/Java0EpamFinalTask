@@ -36,6 +36,7 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+        if(o==null) return false;
         if (!(this.getClass() == o.getClass())) return false;
         User user = (User) o;
         return Objects.equals(getLogin(), user.getLogin()) &&
@@ -45,7 +46,8 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
 
-        return Objects.hash(getLogin(), getPasword());
+        return (int)31*((login==null)?0:login.hashCode())+((password==null)?0:password.hashCode())
+                ;
     }
 
     @Override

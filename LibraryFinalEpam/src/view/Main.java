@@ -2,8 +2,7 @@ package view;
 
 import controller.Controller;
 import controller.ControllerException;
-
-import java.util.Scanner;
+import controller.scanner.DataScanner;
 
 public class Main {
 
@@ -11,12 +10,12 @@ public class Main {
 
     public static void main(String[] args) throws ViewException {
         System.out.println("Input command");
-        Scanner in=new Scanner(System.in);
+
         String ans ;
         do {
-            String s = in.nextLine();
+
             try {
-                ans = new Controller().executeTask(s);
+                ans = new Controller().executeTask(DataScanner.getLine());
             } catch (ControllerException e) {
                 throw new ViewException (e);
             }

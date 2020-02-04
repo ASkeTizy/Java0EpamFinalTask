@@ -36,6 +36,7 @@ public class Book implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+        if(o==null) return false;
         if (!(o.getClass() == this.getClass())) return false;
         Book book = (Book) o;
         return Objects.equals(getName(), book.getName()) &&
@@ -45,7 +46,7 @@ public class Book implements Serializable {
     @Override
     public int hashCode() {
 
-        return 31 + Objects.hash(getName(), getAuthor());
+        return (int)31*((name==null)?0:name.hashCode())+((author==null)?0:author.hashCode());
     }
 
     @Override
